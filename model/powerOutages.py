@@ -54,6 +54,19 @@ class Event:
     def demand_loss(self):
         return self._demand_loss
 
+    @property
+    def anno(self):
+        return self.date_event_began.year
+
+    # TRUCCO ESAME: Mi calcolo la durata in ore direttamente qui!
+    @property
+    def durata_ore(self):
+        # Sottraendo due datetime ottengo un "timedelta"
+        delta = self.date_event_finished - self.date_event_began
+        # Lo converto in ore totali
+        ore = delta.total_seconds() / 3600
+        return ore
+
     def __str__(self):
         # return (f"PowerOutage [id={self._id}, nerc={self._nerc_id}, customers_affected={self._customers_affected} "
         #         f"start_time={self._date_event_began}, end_time= {self._date_event_finished}]")

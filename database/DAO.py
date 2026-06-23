@@ -14,7 +14,7 @@ class DAO():
         result = []
 
         cursor = conn.cursor(dictionary=True)
-        query = """ ADD YOUR QUERY """
+        query = """SELECT DISTINCT * FROM Nerc ORDER BY id"""
 
         cursor.execute(query)
 
@@ -32,7 +32,7 @@ class DAO():
         result = []
 
         cursor = conn.cursor(dictionary=True)
-        query = """ ADD YOUR QUERY """
+        query = """ SELECT * FROM PowerOutages WHERE nerc_id = %s"""
 
         cursor.execute(query, (nerc.id,))
 
